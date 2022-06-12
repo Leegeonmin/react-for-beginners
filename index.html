@@ -8,18 +8,22 @@
     <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type = "text/babel">
         const root = document.getElementById("root");
-        const title = (
-            <h3 id = "title" onMouseEnter={()=> console.log("mouse enter")}>
-            hello
-            </h3>
-        );
-        const button = (
-            <button id = "button" onClick={() => console.log("im clicked")}>
-                Click me
-            </button>
+        let counter = 0;
+
+        function App() {
+            const [counter, setCounter] = React.useState(12); // React.useState는 배열을 전달한다 [인자값, 핸들러함수]
+            const onClick = ()=>{
+                setCounter(counter+1);
+            };
+            console.log("rendered");
+            console.log(counter);
+            return(<div>
+                <h3>Total clicks : {counter}</h3>
+                <button onClick = {onClick}>Click me</button>
+            </div>   
             );
- 
-        const container = React.createElement("div", null, [title,button]);
-        ReactDOM.render(container , root);
+        }
+
+        ReactDOM.render(<App/>  , root);
     </script>
 </html>
