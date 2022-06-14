@@ -13,8 +13,14 @@
         function App() {
             const [counter, setCounter] = React.useState(12); // React.useState는 배열을 전달한다 [인자값, 핸들러함수]
             const onClick = ()=>{
-                //setCounter(counter+1);
-                setCounter(current => current+1);
+                setCounter(counter+1);  //현재 state랑 관련이 없는 값을 새로운 state로 하고싶은 경우
+                setCounter(counter+1);
+                setCounter(counter+1);
+                setCounter(counter+1);
+                setCounter((current)=> current+1);
+                setCounter((current)=> current+1);
+                setCounter((current)=> current+1); 
+                setCounter((current)=> current+1); //현재 state에 조금의 변화를 주어서 새로운 state를 주고 싶은 경우에는 
             };
 
             return(<div>
