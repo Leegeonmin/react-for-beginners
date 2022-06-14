@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <div id = "root"></div>
-    </body>
-    <script src = "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script src = "https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type = "text/babel">
-        const root = document.getElementById("root");
-        let counter = 0;
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
 
-        function App() {
-            const [counter, setCounter] = React.useState(12); // React.useState는 배열을 전달한다 [인자값, 핸들러함수]
-            const onClick = ()=>{
-                setCounter(counter+1);  //현재 state랑 관련이 없는 값을 새로운 state로 하고싶은 경우
-                setCounter(counter+1);
-                setCounter(counter+1);
-                setCounter(counter+1);
-                setCounter((current)=> current+1);
-                setCounter((current)=> current+1);
-                setCounter((current)=> current+1); 
-                setCounter((current)=> current+1); //현재 state에 조금의 변화를 주어서 새로운 state를 주고 싶은 경우에는 
-            };
+    function App() {
+      const [minutes, setMinutes] = React.useState(); //state 선언, 할당
 
-            return(<div>
-                <h3>Total clicks : {counter}</h3>
-                <button onClick = {onClick}>Click me</button>
-            </div>   
-            );
-        }
+      const onChange = (e) => {
+        setMinutes((current) => e.target.value); //state 변경 함수
+      };
+      return (
+        <div>
+          <h3>Super converter</h3>
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            value={minutes}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange={onChange}
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Minutes</label>
+          <input id="hours" placeholder="Hours" type="number" />
+        </div>
+      );
+    }
 
-        ReactDOM.render(<App/>  , root);
-    </script>
+    ReactDOM.render(<App />, root);
+  </script>
 </html>
